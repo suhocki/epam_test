@@ -1,4 +1,4 @@
-package sport.shop;
+package sport.main;
 
 /**
  * Created by Maksim Sukhotski on 3/23/2017.
@@ -15,18 +15,6 @@ class Category {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,8 +23,10 @@ class Category {
         Category category = (Category) o;
 
         if (id != category.id) return false;
-        if (name != null ? !name.equals(category.name) : category.name != null) return false;
-        return description != null ? description.equals(category.description) : category.description == null;
+        return name != null ?
+                name.equals(category.name) : category.name == null && (description != null ?
+                description.equals(category.description) :
+                category.description == null);
 
     }
 

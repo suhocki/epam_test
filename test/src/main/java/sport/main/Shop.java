@@ -1,4 +1,4 @@
-package sport.shop;
+package sport.main;
 
 import com.google.gson.Gson;
 
@@ -14,15 +14,15 @@ import java.util.Map;
 
 import javax.naming.SizeLimitExceededException;
 
-public class Shop {
-    private static final String FILE_PATH = System.getProperty("user.dir") + "\\test\\src\\" + "file.json";
+import static sport.main.Main.FILE_PATH;
 
-    private static Map<SportEquipment, Integer> goods;
-    private static RentUnit rentUnit;
-    private static FileWriter writer;
+class Shop {
+
+    private Map<SportEquipment, Integer> goods;
+    private JsonModel jsonModel;
     private static boolean invalidItemExists;
 
-    public static void main(String[] args) throws IOException, SizeLimitExceededException {
+    private Map<SportEquipment, Integer> loadGoods() throws IOException {
         Reader reader = new FileReader(FILE_PATH);
         final Gson gson = new Gson();
 
@@ -36,23 +36,18 @@ public class Shop {
                 goods.put(item, count == null ? 1 : ++count);
             }
         }
+        return goods;
+    }
 
-        SportEquipment[] rentItems = {
-                new SportEquipment(1, "Шорты Bulat", 400),
-                new SportEquipment(1, "Шорты Bulat", 400)
-        };
+    Shop(JsonModel jsonModel) throws SizeLimitExceededException, IOException {
+        this.jsonModel = jsonModel;
+        goods = loadGoods();
+    }
 
-        for (SportEquipment rentItem : rentItems) {
-            if (goods.containsKey(rentItem) && goods.get(rentItem) > 0) {
-                Integer previousCount = goods.get(rentItem);
-                goods.put(rentItem, --previousCount);
-            } else {
-                invalidItemExists = true;
-            }
-        }
+    void order(RentUnit rentUnit) throws IOException {
+        fillMap(rentUnit);
 
-        if (rentItems.length > 0 && !invalidItemExists) {
-            rentUnit = new RentUnit(rentItems);
+        if (rentUnit.getUnits().length > 0 && !invalidItemExists) {
             List<SportEquipment> updatedGoods = new ArrayList<>();
             for (SportEquipment item : goods.keySet()) {
                 for (int i = 0; i < goods.get(item); i++) {
@@ -66,12 +61,25 @@ public class Shop {
                         ? " отдан в прокат;" + "Цена: " + item.getPrice()
                         : " в магазине;"));
             }
-            writer = new FileWriter(FILE_PATH);
-            writer.write(gson.toJson(jsonModel));
+            FileWriter writer = new FileWriter(FILE_PATH);
+            writer.write((new Gson()).toJson(jsonModel));
             writer.flush();
             writer.close();
         } else {
             System.out.println("Товара нет в магазине.");
+        }
+    }
+
+    private void fillMap(RentUnit rentUnit) {
+        if (rentUnit != null) {
+            for (SportEquipment rentItem : rentUnit.getUnits()) {
+                if (goods.containsKey(rentItem) && goods.get(rentItem) > 0) {
+                    Integer previousCount = goods.get(rentItem);
+                    goods.put(rentItem, --previousCount);
+                } else {
+                    invalidItemExists = true;
+                }
+            }
         }
     }
 }

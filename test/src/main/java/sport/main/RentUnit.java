@@ -1,4 +1,4 @@
-package sport.shop;
+package sport.main;
 
 import javax.naming.SizeLimitExceededException;
 
@@ -6,12 +6,12 @@ import javax.naming.SizeLimitExceededException;
  * Created by Maksim Sukhotski on 3/23/2017.
  */
 
-public class RentUnit {
-    public static final int RENT_MAX_COUNT = 3;
+class RentUnit {
+    private static final int RENT_MAX_COUNT = 3;
 
     private SportEquipment[] units;
 
-    public RentUnit(SportEquipment[] units) throws SizeLimitExceededException {
+    RentUnit(SportEquipment[] units) throws SizeLimitExceededException {
         if (units.length > RENT_MAX_COUNT) {
             throw new SizeLimitExceededException();
         }
@@ -25,7 +25,7 @@ public class RentUnit {
         }
     }
 
-    public SportEquipment[] getUnits() {
+    SportEquipment[] getUnits() {
         return units;
     }
 }

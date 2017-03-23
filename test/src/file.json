@@ -1,1 +1,69 @@
-{"categories":[{"id":1,"name":"Одежда","description":"Спортивная одежда."},{"id":2,"name":"Обувь","description":"Спортивная одежда."},{"id":3,"name":"Тренажеры","description":"Разные спортивные тренажеры."}],"goods":[{"id":1,"title":"Шорты Bulat 2","price":400,"rentStatus":false},{"id":3,"title":"Тренажер для пресса Kettler","price":900,"rentStatus":false},{"id":2,"title":"Борцовки Asics SNAPDOWN","price":200,"rentStatus":false},{"id":1,"title":"Кимоно Дзю-до","price":500,"rentStatus":false},{"id":1,"title":"Штангетки -OV","price":300,"rentStatus":false},{"id":1,"title":"Шорты Bulat","price":400,"rentStatus":false},{"id":1,"title":"Шорты Bulat","price":400,"rentStatus":true},{"id":1,"title":"Шорты Bulat","price":400,"rentStatus":true}]}
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Одежда",
+      "description": "Спортивная одежда."
+    },
+    {
+      "id": 2,
+      "name": "Обувь",
+      "description": "Спортивная одежда."
+    },
+    {
+      "id": 3,
+      "name": "Тренажеры",
+      "description": "Разные спортивные тренажеры."
+    }
+  ],
+  "goods": [
+    {
+      "id": 1,
+      "title": "Шорты Bulat",
+      "price": 400,
+      "rentStatus": false
+    },
+    {
+      "id": 1,
+      "title": "Шорты Bulat",
+      "price": 400,
+      "rentStatus": false
+    },
+    {
+      "id": 1,
+      "title": "Шорты Bulat",
+      "price": 400,
+      "rentStatus": false
+    },
+    {
+      "id": 1,
+      "title": "Шорты Bulat 2",
+      "price": 400,
+      "rentStatus": false
+    },
+    {
+      "id": 1,
+      "title": "Кимоно Дзю-до",
+      "price": 500,
+      "rentStatus": false
+    },
+    {
+      "id": 2,
+      "title": "Борцовки Asics SNAPDOWN",
+      "price": 200,
+      "rentStatus": false
+    },
+    {
+      "id": 1,
+      "title": "Штангетки -OV",
+      "price": 300,
+      "rentStatus": false
+    },
+    {
+      "id": 3,
+      "title": "Тренажер для пресса Kettler",
+      "price": 900,
+      "rentStatus": false
+    }
+  ]
+}

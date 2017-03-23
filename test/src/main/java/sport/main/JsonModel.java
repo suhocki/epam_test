@@ -1,4 +1,4 @@
-package sport.shop;
+package sport.main;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ class JsonModel {
         return goods;
     }
 
-    public void setGoods(List<SportEquipment> goods) {
+    void setGoods(List<SportEquipment> goods) {
         this.goods = goods;
     }
 }

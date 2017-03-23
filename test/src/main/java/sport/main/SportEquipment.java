@@ -1,4 +1,4 @@
-package sport.shop;
+package sport.main;
 
 /**
  * Created by Maksim Sukhotski on 3/23/2017.
@@ -10,29 +10,25 @@ class SportEquipment {
     private int price;
     private boolean rentStatus;
 
-    public SportEquipment(int id, String title, int price) {
+    SportEquipment(int id, String title, int price) {
         this.id = id;
         this.title = title;
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public int getPrice() {
+    int getPrice() {
         return price;
     }
 
-    public boolean getRentStatus() {
+    boolean getRentStatus() {
         return rentStatus;
     }
 
-    public void setRentStatus(boolean rentStatus) {
+    void setRentStatus(boolean rentStatus) {
         this.rentStatus = rentStatus;
     }
 
